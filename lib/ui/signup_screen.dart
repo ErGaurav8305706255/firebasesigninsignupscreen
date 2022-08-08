@@ -54,7 +54,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: simpleTextFieldStyle(),
                         decoration: textFieldInputDecoration("User Name")
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextFormField(
                         validator: (value){
                           if(value!.isEmpty){
@@ -72,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: simpleTextFieldStyle(),
                         decoration: textFieldInputDecoration("Email Id")
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextFormField(
                         validator: (value){
                           if(value!.isEmpty){
@@ -88,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         decoration: textFieldInputDecoration("Password")
                     ),
 
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                     InkWell(onTap: () {
                       signUP(emailTextEditing.text, passwordTextEditing.text);
 
@@ -99,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.blue
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text('SignUp',style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -108,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                       height: 50,width: double.infinity,
                       decoration: BoxDecoration(
@@ -116,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           border: Border.all(color: Colors.cyan,width: 1),
                           color: Colors.white
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text('Sign In with Google',style: TextStyle(
                             color: Colors.indigo,
                             fontSize: 20,
@@ -124,16 +124,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         )),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Already have an Account?"),
-                        SizedBox(width: 10),
+                        const Text("Already have an Account?"),
+                        const SizedBox(width: 10),
                         InkWell(
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Text("SignIn Now",
+                          child: const Text("SignIn Now",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 decoration: TextDecoration.underline
@@ -183,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     .doc(user.uid)
     .set(userModel.toMap());
     Fluttertoast.showToast(msg: "Account created successfully");
-    Navigator.pushAndRemoveUntil((context), MaterialPageRoute(builder: (context) => SignInScreen()),
+    Navigator.pushAndRemoveUntil((context), MaterialPageRoute(builder: (context) => const SignInScreen()),
             (route) => false);
 
   }

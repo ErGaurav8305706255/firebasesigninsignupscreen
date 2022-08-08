@@ -53,7 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       style: simpleTextFieldStyle(),
                       decoration: textFieldInputDecoration("Email Id")
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: passwordTextEditing,
                         validator: (value){
@@ -71,17 +71,17 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: simpleTextFieldStyle(),
                       decoration: textFieldInputDecoration("Password")
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
                       children: [
-                        SizedBox(),
-                        Spacer(),
+                        const SizedBox(),
+                        const Spacer(),
                         Text('Forget Password?',
                         style: simpleTextFieldStyle(),
                         ),
                       ],
                     ),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                     InkWell(
                       onTap: () {
                         signIn(emailTextEditing.text, passwordTextEditing.text);
@@ -92,7 +92,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           borderRadius: BorderRadius.circular(20),
                           color: Colors.blue
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text('Sign In',style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -101,7 +101,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                       height: 50,width: double.infinity,
                       decoration: BoxDecoration(
@@ -109,7 +109,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           border: Border.all(color: Colors.cyan,width: 1),
                           color: Colors.white
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text('Signin with Google',style: TextStyle(
                             color: Colors.indigo,
                             fontSize: 20,
@@ -117,16 +117,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         )),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Don't Have An Account?"),
-                        SizedBox(width: 10),
+                        const Text("Don't Have An Account?"),
+                        const SizedBox(width: 10),
                         InkWell(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
                           },
-                          child: Text("Registor Now",
+                          child: const Text("Register Now",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline
@@ -151,7 +151,7 @@ class _SignInScreenState extends State<SignInScreen> {
           .then((uid) => {
             Fluttertoast.showToast(msg: "login successfully"),
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomeScreen()),
         )
       })
           .catchError((e){

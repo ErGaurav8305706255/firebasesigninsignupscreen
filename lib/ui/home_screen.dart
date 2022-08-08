@@ -39,27 +39,27 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Welcome HomeScreen',
+                const Text('Welcome HomeScreen',
                   style: TextStyle(
                       color: Colors.cyan,
                       fontWeight: FontWeight.w800,
                       fontSize: 25
                   ),),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Text("${loggedInUser.username}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.teal,
                     fontWeight: FontWeight.w600,
                     fontSize: 20
                 ),),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text("${loggedInUser.email}",
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.teal,
                       fontWeight: FontWeight.w600,
                       fontSize: 20
                   ),),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 InkWell(
                   onTap: () {
                     logout(context);
