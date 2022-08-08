@@ -8,7 +8,6 @@ class AuthMethods{
       var result = await _auth.signInWithEmailAndPassword(email: email, password: password);
       User firebaseUser = result.user;
     }catch(e){
-
     }
   }
 }

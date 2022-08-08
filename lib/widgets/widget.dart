@@ -18,20 +18,20 @@ InputDecoration textFieldInputDecoration(String hintText) {
       borderRadius: BorderRadius.circular(5),
     ),
     hintText: hintText,
-    hintStyle: TextStyle(
+    hintStyle: const TextStyle(
       color: Colors.cyanAccent,
     ),
     labelText: hintText,
-    labelStyle: TextStyle(color: Colors.teal),
+    labelStyle: const TextStyle(color: Colors.teal),
     filled: true,
     fillColor: Colors.transparent,
     focusedBorder:
-        OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrange,)),
+        const OutlineInputBorder(borderSide: BorderSide(color: Colors.deepOrange,)),
   );
 }
 
 TextStyle simpleTextFieldStyle(){
-  return TextStyle(
+  return const TextStyle(
     color: Colors.green,
   );
 }
