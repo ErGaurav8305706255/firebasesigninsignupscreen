@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../services/auth.dart';
 import 'home_screen.dart';
 
 
@@ -21,6 +22,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final _formKey = GlobalKey<FormState>();
   final _auth = firebase_auth.FirebaseAuth.instance;
+  AuthMethods authMethods = AuthMethods();
 
   @override
   Widget build(BuildContext context) {
@@ -102,19 +104,24 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Container(
-                      height: 50,width: double.infinity,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.cyan,width: 1),
-                          color: Colors.white
-                      ),
-                      child: const Center(
-                        child: Text('Signin with Google',style: TextStyle(
-                            color: Colors.indigo,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
-                        )),
+                    InkWell(
+                      onTap: () {
+                        authMethods.googleSignIn(context);
+                      },
+                      child: Container(
+                        height: 50,width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Colors.cyan,width: 1),
+                            color: Colors.white
+                        ),
+                        child: const Center(
+                          child: Text('Signing with Google',style: TextStyle(
+                              color: Colors.indigo,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500
+                          )),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20),

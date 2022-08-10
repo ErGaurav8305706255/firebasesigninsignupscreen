@@ -11,21 +11,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+
+
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();
-
 
   @override
   void initState (){
     super.initState();
     FirebaseFirestore.instance
     .collection("user")
-    .doc(user!.uid)
+    .doc(user?.uid)
     .get()
     .then((value){
       loggedInUser = UserModel.fromMap(value.data());
       setState(() {
-
       });
     });
   }
@@ -39,21 +40,21 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Welcome HomeScreen',
+                const Text('Welcome Home Screen',
                   style: TextStyle(
-                      color: Colors.cyan,
+                      color: Colors.red,
                       fontWeight: FontWeight.w800,
                       fontSize: 25
                   ),),
-                const SizedBox(height: 50),
-                Text("${loggedInUser.username}",
+                const SizedBox(height: 80),
+                Text("User Name:-  ${loggedInUser.username}",
                   style: const TextStyle(
                     color: Colors.teal,
                     fontWeight: FontWeight.w600,
                     fontSize: 20
                 ),),
                 const SizedBox(height: 20),
-                Text("${loggedInUser.email}",
+                Text("Email ID:-  ${loggedInUser.email}",
                   style: const TextStyle(
                       color: Colors.teal,
                       fontWeight: FontWeight.w600,
@@ -64,13 +65,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     logout(context);
                   },
-                  child: Container(height: 50,width: 150,
+                  child: Container(
+                    height: 50,width: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.cyan
+                      color: Colors.orange
                     ),
                     child: const Center(
                       child: Text('Logout',style: TextStyle(
+                        fontSize: 18,
                         color: Colors.white,
                         fontWeight: FontWeight.bold
                       )),
