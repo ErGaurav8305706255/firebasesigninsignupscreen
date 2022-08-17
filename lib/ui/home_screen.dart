@@ -4,15 +4,13 @@ import 'package:firebase_login_dummy/models/user_model.dart';
 import 'package:firebase_login_dummy/ui/signin_screen.dart';
 import 'package:flutter/material.dart';
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key,})  :  super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
 
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedInUser = UserModel();

@@ -42,6 +42,7 @@ dependencies:
   firebase_auth: ^0.18.4
   fluttertoast: ^8.0.9
   google_sign_in: ^4.5.9
+  otp_text_field: ^1.1.3
 
 
 

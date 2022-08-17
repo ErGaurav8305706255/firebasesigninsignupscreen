@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_login_dummy/ui/phone_auth_screen.dart';
 import 'package:firebase_login_dummy/ui/signup_screen.dart';
 import 'package:firebase_login_dummy/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../services/auth.dart';
 import 'home_screen.dart';
 
@@ -22,7 +23,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final _formKey = GlobalKey<FormState>();
   final _auth = firebase_auth.FirebaseAuth.instance;
-  AuthMethods authMethods = AuthMethods();
+  Authentication authentication = Authentication();
+  bool _isSigningIn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -91,35 +93,71 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Container(
                         height: 50,width: double.infinity,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(10),
                           color: Colors.blue
                         ),
                         child: const Center(
                           child: Text('Sign In',style: TextStyle(
                             color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600
                           )),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
                     InkWell(
-                      onTap: () {
-                        authMethods.googleSignIn(context);
+                      onTap: () async {
+                        setState(() {
+                          _isSigningIn = true;
+                        });
+                        User? user =
+                        await Authentication.signInWithGoogle(context: context);
+                        setState(() {
+                          _isSigningIn = false;
+                        });
+
+                        if (user != null) {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
+                        }
                       },
                       child: Container(
                         height: 50,width: double.infinity,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: Colors.cyan,width: 1),
-                            color: Colors.white
+                            color: Colors.teal
                         ),
                         child: const Center(
                           child: Text('Signing with Google',style: TextStyle(
-                              color: Colors.indigo,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600
+                          )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (builder) => PhoneAuthScreen()));
+                      },
+                      child: Container(
+                        height: 50,width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.cyan,width: 1),
+                            color: Colors.teal
+                        ),
+                        child: const Center(
+                          child: Text('Continue with Mobile',style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600
                           )),
                         ),
                       ),
@@ -141,7 +179,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         )
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -158,7 +196,7 @@ class _SignInScreenState extends State<SignInScreen> {
           .then((uid) => {
             Fluttertoast.showToast(msg: "login successfully"),
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute( builder: (context) => HomeScreen(),),
         )
       })
           .catchError((e){
